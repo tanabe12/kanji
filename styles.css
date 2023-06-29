@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: 'Nasu Regular';
+    src: url('assets/nasu-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    margin: 0;
+    background-color: snow;
+    text-align: center;
+}
+
+body, .word-input {
+    font-family: 'Nasu Regular', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    padding: 1rem;
+    border-radius: .3rem;
+
+}
+
+.word-display {
+    font-size: 500%
+}
+
+input {
+    caret-color: #694539;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Nasu Regular';
+    background-color: snow;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}

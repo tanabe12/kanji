@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang-en>
+<head>
+    <title>
+        kanji quiz
+    </title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <script src="script.js" ></script>
+    <div class="container">
+        <div class="word-display" id="word" >⠀</div>
+        <!-- <textarea id="wordInput" class="word-input" autofocus></textarea> -->
+        <div class="word-input">
+            <form id="wordInput">
+                <input type="text" class="input" name="q" size="50" value="" autocomplete="off" id="input" autofocus>
+            </form>
+        </div>
+        <script> window.onload = function() {
+            //generate_word();
+            //randomJouyou();
+          }
+        </script>
+        <!-- <button type="button" onclick='document.getElementById("word").innerHTML = "balls"'>Click Me!</button> -->
+        <button type="button" onclick='generate_word();'>Click Me!</button>
+    </div>
+
+</body>
+</html>
