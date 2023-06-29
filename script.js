@@ -1,45 +1,61 @@
 
-
+// https://sites.google.com/a/h7a.org/kanjicompounds/after-primary-school
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-async function randomJouyou() {
+
+let data;
+
+async function fetchData() {
     try {
-        const response = await fetch("https://kanjiapi.dev/v1/kanji/jouyou");
-        const data = await response.json();
-        const randomNumber = Math.floor(Math.random() * data.length);
-        const randomKanji = data[randomNumber];
-        console.log(randomKanji);
-        return randomKanji;
+        const response = await fetch("./all.json");
+        data = await response.json();
+        console.log(data); // Optional: Log the fetched data for verification
     } catch (error) {
         console.error("Error", error);
     }
 }
 
-/*
-async function generate_word() {
-    try {
-      const word = await randomJouyou();
-      document.getElementById("word").innerHTML = word;
-    } catch (error) {
-      console.error('Error', error);
-    }
-}
-*/
 
-async function generate_word() {
+async function generateWord() {
     try {
-        //const kanji = await randomJouyou();
-        //const response = await fetch(`https://jisho.org/api/v1/search/words?keyword=%23common%20%23words${kanji}`);
-        //const data = await response.json();
-        //console.log(data);
-        const response = await fetch("words/all.json");
-        const data = await response.json();
         console.log(data);
-        const randomNumber = Math.floor(Math.random() * data.length);
-        const word = data[randomNumber];
+        const keys = Object.keys(data);
+        const randomNumber = Math.floor(Math.random() * keys.length);
+        const word = keys[randomNumber];
+        const reading = wanakana.toRomaji(data[word]);
+        //console.log(word);
+        console.log(reading);
+
         document.getElementById("word").innerHTML = word;
-        
+        return reading;
 
     } catch (error) {
         console.error("Error", error);
     }
 }
+
+async function getValue() {
+    let input = document.getElementById("input").value;
+
+
+    
+    if(input === reading) {
+        console.log("correct");
+        reading = await generateWord();
+        document.getElementById("input").value = "";
+        getValue();
+    }
+
+}
+
+let reading;
+
+async function initialize() {
+    await fetchData();
+    reading = await generateWord();
+
+  }
+
+
+initialize();
+
+
