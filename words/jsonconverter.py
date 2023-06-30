@@ -7,7 +7,7 @@ import json
  
 # the file to be converted to
 # json format
-filename = 'all2.txt'
+filename = 'gr6.txt'
  
 # dictionary where the lines from
 # text will be stored
@@ -26,6 +26,6 @@ with open(filename, encoding="utf8") as fh:
  
 # creating json file
 # the JSON file is named as test1
-out_file = open("test1.json", "w")
+out_file = open("gr6.json", "w")
 json.dump(dict1, out_file, indent = 4, sort_keys = False)
 out_file.close()
