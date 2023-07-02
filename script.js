@@ -60,6 +60,7 @@ async function initialize(decknumber) {
     reading = await generateWord();
     const display = document.querySelector('.container');
     display.classList.add('show');
+    document.getElementById("input").value = "";
 }
 
 
@@ -81,10 +82,29 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     async function handleMenuItemClick(e) {
+        const display = document.querySelector('.container');
         const eventNumber = e.target.getAttribute("data-event");
         if (eventNumber >= 0 && eventNumber <= 6) {
-            initialize(Number(eventNumber));
-            console.log("Event " + eventNumber + " triggered");
+            display.classList.remove('show');
+
+            /*
+            setTimeout(async function() {
+                await initialize(Number(eventNumber));
+                console.log("Event " + eventNumber + " triggered");
+            }, 10
+            );
+            */
+
+            display.addEventListener("transitionend", async function() {
+                await initialize(Number(eventNumber));
+                console.log("Event" + eventNumber + "triggered");
+                display.removeEventListener("transitionend", arguments.callee);
+                setTimeout(function() {
+                    display.classList.add("show");
+                }, 1);
+
+            });
+
             const deckName = e.target.textContent;
             document.getElementById("buttontext").textContent = deckName;
         } else {

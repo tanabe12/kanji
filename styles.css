@@ -3,8 +3,15 @@
 }
 
 @font-face {
-    font-family: 'Noto Sans JP Regular';
-    src: url('assets/noto.ttf') format('truetype');
+    font-family: "Kosugi Maru Regular";
+    src: url("assets/KosugiMaru-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Zen Maru Gothic Medium";
+    src: url("assets/ZenMaruGothic-Medium.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -30,7 +37,7 @@ body {
 
 
 body, .word-input {
-    font-family: 'Noto Sans JP Regular', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Kosugi Maru Regular', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .container {
@@ -56,11 +63,11 @@ body, .word-input {
 }*/
 
 input {
-    color:#303030;
+    color:#363636;
     caret-color: #694539;
     text-align: center;
     font-size: 2.5rem;
-    font-family: 'Noto Sans JP Regular';
+    font-family: 'Zen Maru Gothic Medium';
     background-color: snow;
     border-top-style: hidden;
     border-right-style: hidden;
@@ -92,24 +99,40 @@ input {
   
   
 #decklist span {
-display: block; /* Display each word on a new line */
-padding: 5px 10px;
+    display: block; /* Display each word on a new line */
+    padding: 5px 10px;
 }
 
 #decklist li {
-cursor: pointer;
-padding: 0.5rem 1rem;
-font-size: 1rem;
-color: #333;
-border-bottom: 1px solid #ccc; /* Add a bottom border */
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #333;
+
 }
 
 #decklist li:hover {
-background-color: #f5f5f5;
+    background-color: #f5f5f5;
+    
 }
 
 #deckbutton {
-/* ... */
-padding: 0.5rem 1rem;
-/* ... */
+    /* ... */
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color:grey;
+    font-size: 1.1rem;
+    font-family: "Kosugi Maru Regular";
+    /* ... */
+}
+
+#deckbutton:hover {
+    color:black;
+
+}
+
+#deckbutton:focus {
+    color:black;
 }
