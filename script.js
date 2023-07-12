@@ -2,9 +2,11 @@
 // https://sites.google.com/a/h7a.org/kanjicompounds/after-primary-school
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 
-//bugs
+
 //intializing while furigana is displayed skips the next check
 //https://media.discordapp.net/attachments/1031821832149532722/1128504103920746556/image.png
+//add english meaning
+//add quizmode/retention mode
 
 let data = {};
 
@@ -102,6 +104,7 @@ async function checkAnswer(e) {
         
     } else {
         valid = true;
+        document.getElementById("input").value = "";
         document.getElementById("reading").innerHTML = "";
         reading = await generateWord();
     }    
@@ -133,6 +136,7 @@ async function initialize(n) {
         document.getElementById("reading").innerHTML = "";
 
         document.getElementById("input").disabled = 0;
+        document.getElementById("input").focus();
         //console.log("decks " + n);
 
 
@@ -142,6 +146,7 @@ async function initialize(n) {
         document.getElementById("reading").innerHTML = "";
         //document.getElementById("input").style.opacity = 0;
         document.getElementById("input").disabled = 1;
+        document.getElementById("input").style.opacity = 0;
     }
 
     //fade in 

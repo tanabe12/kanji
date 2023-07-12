@@ -55,9 +55,10 @@ body, .word-input {
 }
 
 .word-display {
-    font-size: 500%;
+    font-size: 125px;
     user-select: none;
     margin-top: 1.5rem;
+    margin-bottom:1.5rem;
 
 }
 
@@ -67,18 +68,27 @@ body, .word-input {
 
 
 
-input {
+input[type=text] {
     color:#363636;
+    background-color:rgba(204, 200, 200, 0.438);
     caret-color: #694539;
     text-align: center;
     font-size: 2.5rem;
     font-family: 'Zen Maru Gothic Medium';
-    background-color: rgb(255, 250, 250);
+    /*background-color: rgb(255, 250, 250);*/
+    width:350px;
+    padding:8px;
+    border-radius: 8px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
 }
+
+input::placeholder {
+    font-size: 80%;
+}
+
 
 .menu {
     display: none;
@@ -100,13 +110,14 @@ input {
     border-radius: 8px;
     text-align: left;
     user-select:none;
+    font-size: 20px;
     
 
 }
 
 .furigana {
     font-family: 'Kosugi Maru Regular';
-    font-size: 1.5rem;
+    font-size: 30px;
     padding-top:1rem;
     color:rgb(158, 0, 0);
     opacity: 0;
