@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box
+}
+
+@font-face {
+    font-family: "Kosugi Maru Regular";
+    src: url("assets/KosugiMaru-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Zen Maru Gothic Medium";
+    src: url("assets/ZenMaruGothic-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    margin: 0;
+    background-color: snow;
+    text-align: center;
+
+}
+
+
+
+body, .word-input {
+    font-family: 'Kosugi Maru Regular', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    padding: 1rem;
+    border-radius: .3rem;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+
+}
+
+.container.show {
+    opacity:1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.word-display {
+    font-size: 500%;
+    user-select: none;
+    margin-top: 1.5rem;
+
+}
+
+/*.word-display.show {
+    opacity:1;
+}*/
+
+
+
+input {
+    color:#363636;
+    caret-color: #694539;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Zen Maru Gothic Medium';
+    background-color: rgb(255, 250, 250);
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.menu-content {
+    background-color: rgb(253, 248, 248);;
+    margin: 15% auto;
+    padding: 1rem;
+    width: 30%;
+    border: 1px solid #333;
+    border-radius: 8px;
+    text-align: left;
+    user-select:none;
+    
+
+}
+
+.furigana {
+    font-family: 'Kosugi Maru Regular';
+    font-size: 1.5rem;
+    padding-top:1rem;
+    color:rgb(158, 0, 0);
+    opacity: 0;
+    transition: opacity 0.05s ease-in-out;
+}
+
+.furigana.show {
+    opacity: 1;
+    transition: opacity 0.05s ease-in-out;
+}
+
+.decks ul{
+    display:relative;
+    white-space: normal;
+    padding-left: 0;
+}
+
+.decks ul li{
+    display:inline;
+    white-space: normal;
+}
+
+.option{
+    color:rgb(133, 112, 112); 
+}
+
+.option:hover,
+.option:active{
+    color:black;
+    cursor:pointer;
+}
+
+.option-selected {
+    color:rgb(0, 0, 0);
+}
+
+.option-selected:hover,
+.option-selected:active{
+    cursor:pointer;
+}
+
+
+
+#reading {
+    height: 1rem;
+}
+
+/*
+#resetbutton {
+    background-color: transparent;
+    border: none;
+    padding:1rem 2rem;
+    color:grey;
+    cursor:pointer;
+}
+
+#resetbutton:hover {
+    color:black;
+}
+*/
+
+
+#ok {
+    left: 50%;
+    position: absolute;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.ok-button {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
