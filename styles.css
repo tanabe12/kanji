@@ -59,6 +59,8 @@ body, .word-input {
 }
 
 .quiz {
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
@@ -72,7 +74,7 @@ body, .word-input {
     font-size: 125px;
     user-select: none;
     margin-top: 1.5rem;
-    margin-bottom:1.5rem;
+    margin-bottom:2.5rem;
 
 }
 
@@ -103,6 +105,21 @@ input::placeholder {
     font-size: 80%;
 }
 
+.word-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#input {
+    position:fixed;
+}
+
+#input.absolute {
+    position: absolute;
+}
+
 
 .menu {
     display: none;
@@ -112,13 +129,11 @@ input::placeholder {
     top: 40%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    overflow: auto;
 }
 
 .menu-content {
     font-family:Zen Maru Gothic Medium;
     /*background-color: rgb(253, 248, 248);;*/
-
     margin: 15% auto;
     padding: 1rem;
     width: 500px;
@@ -129,7 +144,6 @@ input::placeholder {
     user-select:none;
     font-size: 20px;
     
-
 }
 
 .menu-button-container {

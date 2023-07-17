@@ -259,7 +259,18 @@ document.addEventListener("DOMContentLoaded", function() {
         decks = changeDeck();
         console.log("decks: " + decks)
         //initialize(decks);
-        menu.style.display = "block";
+        menu.style.display = "grid";
+    }
+
+    $(document).ready(function() {
+        document.ontouchmove = function(e){
+             e.preventDefault();
+             }
+    });
+
+    input.onfocus = function () {
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
     }
     
     startUp();
