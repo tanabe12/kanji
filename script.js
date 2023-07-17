@@ -7,6 +7,8 @@
 //https://media.discordapp.net/attachments/1031821832149532722/1128504103920746556/image.png
 //add english meaning
 //add quizmode/retention mode
+//add transition to menu display on startup
+//cleanup (menubutton svg fill css)
 
 let data = {};
 
@@ -14,12 +16,17 @@ async function fetchData(deck) {
     try {
         const deckFiles = {
             //0: "./all.json",
-            1: "./gr1.json",
-            2: "./gr2.json",
-            3: "./gr3.json",
-            4: "./gr4.json",
-            5: "./gr5.json",
-            6: "./gr6.json",
+            "一年生": "./data/gr1.json",
+            "二年生": "./data/gr2.json",
+            "三年生": "./data/gr3.json",
+            "四年生": "./data/gr4.json",
+            "五年生": "./data/gr5.json",
+            "六年生": "./data/gr6.json",
+            "N5": "./data/n5.json",
+            "N4": "./data/n4.json",
+            "N3": "./data/n3.json",
+            "N2": "./data/n2.json",
+            "N1": "./data/n1.json"
         };
 
 
@@ -38,6 +45,7 @@ async function fetchData(deck) {
 
         //console.log("datatype " + typeof data);
         //console.log("data " + data); // Optional: Log the fetched data for verification
+        console.log("wordcount " + Object.keys(data).length)
         return data;
     } catch (error) {
         console.error("Error", error);
@@ -55,7 +63,7 @@ async function generateWord() {
         const word = keys[randomNumber];
         //const reading = wanakana.toRomaji(data[word]); (Furigana)
         const reading = data[word];
-        console.log("reading " + reading);
+        console.log("reading " + typeof reading);
 
         document.getElementById("word").innerHTML = word;
 
@@ -74,6 +82,7 @@ let valid = true;
 
 async function checkAnswer(e) {
     const furigana = document.querySelector(".furigana");
+
 
     if(e.key === "Enter") {
         input = document.getElementById("input").value;
@@ -104,9 +113,10 @@ async function checkAnswer(e) {
         
     } else {
         valid = true;
+        reading = await generateWord();
         document.getElementById("input").value = "";
         document.getElementById("reading").innerHTML = "";
-        reading = await generateWord();
+
     }    
 }}
 
@@ -114,16 +124,19 @@ async function checkAnswer(e) {
 let reading;
 var deckNumber = 0;
 let selectedDecks = [1];
+let display;
 
 async function initialize(n) {
     //document.querySelector("[data-event='1']").className = "option-selected";
     //console.log("classname: " + document.querySelector("[data-event='1']").className);
 
-    const display = document.querySelector(".container");
+    display = document.querySelector(".quiz");
 
     //fade out 
     display.style.opacity = 0;
     await new Promise((resolve) => setTimeout(resolve, 100));
+
+    document.getElementById("menu-button-text").innerHTML = "";
 
     if (n.length !== 0) {
         //do stuff
@@ -134,6 +147,7 @@ async function initialize(n) {
         document.getElementById("input").style.opacity = 1;
         document.getElementById("input").value = "";
         document.getElementById("reading").innerHTML = "";
+        document.getElementById("menu-button-text").innerHTML = n.join(", ");
 
         document.getElementById("input").disabled = 0;
         document.getElementById("input").focus();
@@ -146,7 +160,8 @@ async function initialize(n) {
         document.getElementById("reading").innerHTML = "";
         //document.getElementById("input").style.opacity = 0;
         document.getElementById("input").disabled = 1;
-        document.getElementById("input").style.opacity = 0;
+        //document.querySelector(".word-input" ).style.opacity = 0;
+        //document.getElementById("input").style.opacity = 0;
     }
 
     //fade in 
@@ -161,28 +176,36 @@ document.addEventListener("DOMContentLoaded", function() {
     //const deckButton = document.getElementById("deckbutton");
 
     const menu = document.querySelector(".menu");
-    const menuButton = document.getElementById("menubutton");
+    const menuButton = document.getElementById("menu-button");
     const okButton = document.getElementById("ok");
 
     let confirm = false;
     
 
     //display the menu
-    menuButton.onclick = function() {
+
+    
+    menuButton.onclick = async function() {
+        display.style.opacity = 0;
+        await new Promise((resolve) => setTimeout(resolve, 100));
         menu.style.display = "block";
     }
+    
 
     //exiting the menu
+
+    /*
     window.onclick = function(e) {
         if (e.target == menu) {
             menu.style.display = "none";
             confirm = false;
             console.log(confirm);
     }}
+    */
 
     var decks = document.querySelector(".decks");
     var deckList = decks.getElementsByTagName("li");
-    console.log("# of decks: " + deckList.length);
+    console.log("# of decks prepared: " + deckList.length);
 
     for(let i = 0; i < deckList.length; i++) {
         deckList[i].addEventListener("click", selectDeck);
@@ -206,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (decks != changeDeck()) {
             console.log("decks changed");
             decks = changeDeck();
-            console.log("decks: " + decks)
+            console.log("deck ids: " + decks)
             initialize(decks);
         }
 
@@ -219,7 +242,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for(let i = 0; i < selected.length; i++) {
             //console.log(selected[i].getAttribute("data-event"));
-            selectedDecks.push(selected[i].getAttribute("data-event"));
+            //selectedDecks.push(selected[i].getAttribute("data-event"));
+            selectedDecks.push(selected[i].innerHTML);
             //console.log("selected: " + selectedDecks);
 
         }
@@ -234,7 +258,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("[data-event='1']").className = "option-selected";
         decks = changeDeck();
         console.log("decks: " + decks)
-        initialize(decks);
+        //initialize(decks);
+        menu.style.display = "block";
     }
     
     startUp();

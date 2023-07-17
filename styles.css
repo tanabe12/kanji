@@ -48,13 +48,23 @@ body, .word-input {
 .container {
     padding: 1rem;
     border-radius: .3rem;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.1s ease-in-out;
 
 }
 
 .container.show {
-    opacity:1;
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.quiz {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.quiz.show {
+    opacity: 1;
     transition: opacity 0.1s ease-in-out;
 }
 
@@ -75,7 +85,7 @@ body, .word-input {
 input[type=text] {
     color:#363636;
     background-color:rgba(204, 200, 200, 0.438);
-    caret-color: #694539;
+    caret-color: #000000;
     text-align: center;
     font-size: 2.5rem;
     font-family: 'Zen Maru Gothic Medium';
@@ -97,26 +107,68 @@ input::placeholder {
 .menu {
     display: none;
     position: absolute;
-    /*z-index: 1;*/
+    z-index: 1; /* above other elements */
     left: 50%;
-    top: 50%;
+    top: 40%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
     overflow: auto;
 }
 
 .menu-content {
-    background-color: rgb(253, 248, 248);;
+    font-family:Zen Maru Gothic Medium;
+    /*background-color: rgb(253, 248, 248);;*/
+
     margin: 15% auto;
     padding: 1rem;
     width: 500px;
-    border: 1px solid #333;
+    border: none;
+    /*border: 1px solid #333;*/
     border-radius: 8px;
     text-align: left;
     user-select:none;
     font-size: 20px;
     
 
+}
+
+.menu-button-container {
+    align-items:center;
+    display:flex;
+    justify-content: center;
+}
+
+#menu-button {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    color: #878585;
+    border:none;
+    font-family: 'Zen Maru Gothic Medium';
+    font-size: 20px;
+    background: transparent;
+}
+
+#menu-button-text {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.15rem;
+    margin-left: 0.45rem; /* Add some right margin to create spacing */
+}
+
+#menu-button svg {
+    display: flex;
+    width: 1.25em;
+    height: 1.25em;
+    color:#878585;
+}
+
+#menu-button:hover {
+    color:black;
+}
+
+#menu-button:hover svg {
+    fill:black;
 }
 
 .furigana {
@@ -150,7 +202,7 @@ input::placeholder {
 
 .option:hover,
 .option:active{
-    color:black;
+    color:rgb(27, 27, 27);
     cursor:pointer;
 }
 
@@ -185,10 +237,22 @@ input::placeholder {
 
 
 #ok {
+    font-family:Zen Maru Gothic Medium;
+    font-size:14px;
+    padding:0.1rem;
     left: 50%;
     position: absolute;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    background-color: rgb(48, 48, 48);
+    border: none;
+    border-radius:8px;
+    width:100px;
+    color:white;
+}
+
+#ok:active {
+    background-color: rgb(27, 27, 27);
 }
 
 .ok-button {
