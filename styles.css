@@ -49,10 +49,10 @@ body, .word-input {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
     padding: 1rem;
+    padding-bottom:10rem;
     border-radius: .3rem;
+    height:100vh;
     opacity: 1;
     transition: opacity 0.1s ease-in-out;
 
@@ -62,17 +62,6 @@ body, .word-input {
     opacity: 1;
     transition: opacity 0.1s ease-in-out;
 }
-
-.content-container {
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-    height: 50vh;
-    overflow-y: auto;
-}
-
 
 .quiz {
     align-items: center;
@@ -86,14 +75,11 @@ body, .word-input {
     transition: opacity 0.1s ease-in-out;
 }
 
-
 .word-display {
     font-size: 125px;
     user-select: none;
-    /*margin-top: 1.5rem;
-    margin-bottom:2.5rem;*/
-    padding-top: 1.5rem;
-    padding-bottom:2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom:2.5rem;
 
 }
 
@@ -131,14 +117,6 @@ input::placeholder {
 
 }
 
-#input {
-    position:fixed;
-}
-
-#input.absolute {
-    position: absolute;
-}
-
 
 .menu {
     display: none;
@@ -153,7 +131,7 @@ input::placeholder {
 .menu-content {
     font-family:Zen Maru Gothic Medium;
     /*background-color: rgb(253, 248, 248);;*/
-    margin: 15% auto;
+    margin: 0 auto;
     padding: 1rem;
     width: 500px;
     border: none;
@@ -162,14 +140,25 @@ input::placeholder {
     text-align: left;
     user-select:none;
     font-size: 20px;
+    max-width:90%;
     
 }
+
+@media only screen and (max-width: 600px) {
+    /* Styles for screens with a maximum width of 600px (e.g., mobile devices) */
+    .menu-content {
+        max-width: 70%; /* Increase the maximum width for smaller screens */
+        font-size: 16px; /* Optionally adjust the font size for better readability on mobile devices */
+    }
+}
+
 
 .menu-button-container {
     align-items:center;
     display:flex;
     justify-content: center;
 }
+
 
 #menu-button {
     display: flex;
@@ -196,13 +185,13 @@ input::placeholder {
     color:#878585;
 }
 
-#menu-button:hover {
-    color:black;
+#menu-button:hover,
+#menu-button:hover svg {
+    color: black;
+    fill: black;
 }
 
-#menu-button:hover svg {
-    fill:black;
-}
+
 
 .furigana {
     font-family: 'Kosugi Maru Regular';
@@ -219,14 +208,15 @@ input::placeholder {
 }
 
 .decks ul{
-    display:relative;
-    white-space: normal;
+    display: flex;
+    flex-wrap: wrap;
     padding-left: 0;
 }
 
 .decks ul li{
-    display:inline;
     white-space: normal;
+    overflow: hidden;
+
 }
 
 .option{
